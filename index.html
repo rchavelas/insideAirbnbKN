@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>k nearest airbnb listings (CDMX)</title>
+    <link rel="icon" href="icon/LogoMakr-29CGUO.png">
+    <script></script>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!--Materialize CSS-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    
+</head>
+
+<body>
+    <!-- Navbar goes here -->
+    <!-- Page Layout here -->
+    <div class="row">
+        <aside id="navContainer" class="col s12 m5 l4">
+            <section class="section">
+                <div class="title">airbnb <span class="red-text text-lighten-2">k</span> listings (CDMX)</div>
+                <p>Use this tool to get the price distribution of the <em>k</em> nearest listings from a specific location.</p>
+                <p>Initial conditions have been set, feel free to indicate the latitude, longitude (or click on any part of the map) and <span>k</span> neighbors to get the distribution of prices in a certain region. ($ = MX Peso)</p>
+            </section>
+            <section class="section grey lighten-5 priceDist">
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Min</th>
+                            <th>Average</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td id="mintdTag"></td>
+                            <td id="avgtdTag"></td>
+                            <td id="maxtdTag"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <br>
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 m4">
+                            <label for="latitude" class="active">Latitude:</label>
+                            <input type = "number" id="latitude" name="latitude" size="18" class="inputField" step="0.001" required>
+                        </div>
+                        
+                        <div class="input-field col s12 m4">
+                            <label for="longitude" class="active">Longitude:</label>
+                            <input type = "number" id="longitude" name="longitude" size="18" class="inputField" step="0.001" required>
+                        </div>
+                        
+                        <div class="input-field col s12 m4">
+                            <label for="kVal" class="active">K</label>
+                            <input type="number" id="kVal" name="kVal" value="5"
+                            min="2" max="50" size=3 class="inputField" step="1">
+                        </div>
+                    </div> 
+                    <div class="computeDiv">
+                        <button id="relocateButton" class="btn red lighten-2">Relocate</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <footer class="grey-text">
+                <p></p>
+                <p>A project by: Ricardo Chavelas. Find me @ <a href="https://github.com/rchavelas/" target="_blank">Github</a>
+                    <br>Data source (with minor cleansing): <a href="http://insideairbnb.com/" target="_blank">insideairbnb.com</a>
+                    <br>Listings information as of: 18 July, 2021.
+                </p>
+            </footer>
+        </aside>
+        <div id="mapid" class="col s12 m7 l8"></div>
+    </div>
+</body>
+<!--Materialize JS-->
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--JS scripts-->
+<script type = "text/javascript" src = "js/listings.js"></script>
+<script type = "text/javascript" src = "js/main.js"></script>
+
+</html>
