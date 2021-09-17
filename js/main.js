@@ -154,6 +154,9 @@ listingsFiltered.map((obs, index) => {
 
   // Fly to selected location
   mymap.flyTo([latInput, lonInput])
+
+  // Update labels on Materialize
+  M.updateTextFields();
 };
 
 plotKnn()
